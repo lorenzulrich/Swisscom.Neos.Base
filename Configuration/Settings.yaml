@@ -5,6 +5,6 @@ TYPO3:
         'Swisscom.Neos.Base': TRUE
     nodeTypes:
       groups:
-        structures:
+        structure:
           position: 99
-          label: 'Structures'
+          label: 'Structure'
