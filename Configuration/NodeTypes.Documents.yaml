@@ -1,0 +1,69 @@
+# If you need more than just the "main" content area you can uncomment the snippet below. It will add a "sidebar" area
+# to your pages. You can add as many areas as you like, still only those that are rendered in your TypoScript and
+# Template are visible on your page.
+---
+#'TYPO3.Neos.NodeTypes:Page':
+#  childNodes:
+#    'sidebar':
+#      type: 'TYPO3.Neos:ContentCollection'
+
+
+
+'Swisscom.Neos.Base:Sysfolder':
+  superTypes:
+    'TYPO3.Neos:Document': TRUE
+  ui:
+    label: 'Sysfolder'
+    icon: 'icon-folder-close'
+
+'Swisscom.Neos.Base:Rootpage':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': TRUE
+  ui:
+    label: Rootpage
+    icon: 'icon-globe'
+    inspector:
+      tabs:
+        rootSettings:
+          label: 'Global settings'
+          position: 30
+          icon: 'icon-cogs'
+      groups:
+        generalRootSettings:
+          label: General
+          position: 20
+          tab: rootSettings
+  properties:
+    siteName:
+      type: string
+      ui:
+        label: 'Site Name'
+        defaultValue: ''
+        reloadIfChanged: true
+        inspector:
+          group: generalRootSettings
+          position: 10
+    headerMetaNavigationRootPage:
+      type: reference
+      ui:
+        label: 'headerMetaNavigation rootPage'
+        reloadIfChanged: true
+        inspector:
+          group: generalRootSettings
+          position: 20
+          editorOptions:
+            nodeTypes:
+              - 'Swisscom.Neos.Base:Sysfolder'
+            placeholder: 'Type to search for nodes'
+    footerMetaNavigationRootPage:
+      type: reference
+      ui:
+        label: 'footerMetaNavigation rootpage'
+        reloadIfChanged: true
+        inspector:
+          group: generalRootSettings
+          position: 30
+          editorOptions:
+            nodeTypes:
+              - 'Swisscom.Neos.Base:Sysfolder'
+            placeholder: 'Type to search for nodes'
