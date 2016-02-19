@@ -3,3 +3,8 @@ TYPO3:
     typoScript:
       autoInclude:
         'Swisscom.Neos.Base': TRUE
+    nodeTypes:
+      groups:
+        structures:
+          position: 99
+          label: 'Structures'
