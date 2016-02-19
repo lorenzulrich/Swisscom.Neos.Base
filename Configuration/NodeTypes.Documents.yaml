@@ -18,7 +18,7 @@
   ui:
     label: 'Sysfolder'
     icon: 'icon-folder-close'
-    group: 'structures'
+    group: 'structure'
 
 'Swisscom.Neos.Base:Rootpage':
   superTypes:
