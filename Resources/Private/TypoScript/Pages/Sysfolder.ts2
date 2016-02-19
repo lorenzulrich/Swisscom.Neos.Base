@@ -1,0 +1,5 @@
+sysfolder = Page {
+	body {
+		templatePath = 'resource://Swisscom.Neos.Base/Private/Templates/Pages/Sysfolder.html'
+	}
+}

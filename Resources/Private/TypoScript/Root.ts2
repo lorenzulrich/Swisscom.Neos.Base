@@ -1,0 +1,10 @@
+include: Pages/**/*.ts2
+
+root = TYPO3.TypoScript:Case
+root {
+	sysfolder {
+		@position = 'start'
+		condition = ${q(node).is('[instanceof Swisscom.Neos.Base:Sysfolder]')}
+		renderPath = '/sysfolder'
+	}
+}
