@@ -21,6 +21,7 @@ use TYPO3\TYPO3CR\Domain\Repository\ContentDimensionRepository;
  */
 class RenameDimensionValue extends \TYPO3\TYPO3CR\Migration\Transformations\AbstractTransformation
 {
+
     /**
      * The  name for the dimension.
      *
@@ -96,15 +97,24 @@ class RenameDimensionValue extends \TYPO3\TYPO3CR\Migration\Transformations\Abst
      * @param \TYPO3\TYPO3CR\Domain\Model\NodeData $nodeData
      * @return void
      */
+
     public function execute(NodeData $nodeData)
     {
         $dimensions = $nodeData->getDimensions();
         if ($dimensions !== array()) {
+            $hasChanges = false;
+            $newDimensions  = array();
             foreach ($dimensions as $dimension) {
                 /** @var NodeDimension $dimension */
                 if ($dimension->getName() === $this->dimensionName && $dimension->getValue() === $this->oldDimensionValue) {
                     $dimension->setValue($this->newDimensionValue);
+                    $dimension = new NodeDimension($dimension->getNodeData(), $this->dimensionName, $this->newDimensionValue);
+                    $hasChanges = true;
                 }
+                $newDimensions[] = $dimension;
+            }
+            if ($hasChanges) {
+                $nodeData->setDimensions($newDimensions);
             }
         }
     }
